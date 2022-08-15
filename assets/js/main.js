@@ -13,14 +13,13 @@ const forwardBtn = document.querySelector('.forward-btn');
 const backwardBtn = document.querySelector('.backward-btn');
 const sidebarBtn = document.querySelector('.sidebar');
 
-isMusicPaused = true;
-
 
 const setMusic = (i) => {
-  seekBar.value = 0; // set range slide value to 0;
+  seekBar.value = 0; 
   let song = songs[i];
   currentMusic = i;
   music.src = song.path;
+
 
   songName.innerHTML = song.name;
   artistName.innerHTML = song.artist;
@@ -32,8 +31,6 @@ const setMusic = (i) => {
       musicDuration.innerHTML = formatTime(music.duration);
   }, 300);
 }
-
-// formatting time in min and seconds format
 
 const formatTime = (time) => {
   let min = Math.floor(time / 60);
@@ -57,7 +54,6 @@ playBtn.addEventListener('click', () => {
   disk.classList.toggle('play');
 })
 
-// seek bar
 setInterval(() => {
   seekBar.value = music.currentTime;
   currentTime.innerHTML = formatTime(music.currentTime);
@@ -67,7 +63,6 @@ seekBar.addEventListener('change', () => {
   music.currentTime = seekBar.value;
 })
 
-// forward and backward button
 forwardBtn.addEventListener('click', () => {
   if(currentMusic >= songs.length - 1){
       currentMusic = 0;
@@ -90,8 +85,6 @@ backwardBtn.addEventListener('click', () => {
 
 const playMusic = () => {
   music.play();
-  playBtn.classList.remove('pause');
-  disk.classList.add('play');
 }
 
 setInterval(() => {
